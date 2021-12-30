@@ -28,7 +28,10 @@ public class LoginUserService implements UserDetailsService {
 			throw new UsernameNotFoundException("そのEmaiは登録されていません");
 		}
 		Collection<GrantedAuthority> authorityList = new ArrayList<>();
-//		authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+		authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+//		if(member.isAdmin()) {
+//		authorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN")); // 管理者権限付与
+//	}
 		return new LoginUser(userEntity,authorityList);
 	}
 }
